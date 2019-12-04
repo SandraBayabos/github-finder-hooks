@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 //IN A FUNCTION, PROPS ARE PASSED IN HERE
 
-const Search = ({ searchUsers, showClear, clearUsers }) => {
+const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
   // state = {
   //   text: ""
 
@@ -23,8 +23,8 @@ const Search = ({ searchUsers, showClear, clearUsers }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (this.state.text === "") {
-      this.props.setAlert("Please enter something", "light");
+    if (text === "") {
+      setAlert("Please enter something", "light");
     } else {
       this.props.searchUsers(this.state.text);
       this.setState({ text: "" });
