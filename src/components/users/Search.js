@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 // FORMS ARE ALWAYS COMPONENT-LEVEL STATE. YOU WON'T BRING IT TO APP.JS LEVEL
@@ -8,13 +8,18 @@ import PropTypes from "prop-types";
 //IN A FUNCTION, PROPS ARE PASSED IN HERE
 
 const Search = ({ searchUsers, showClear, clearUsers }) => {
-  state = {
-    text: ""
+  // state = {
+  //   text: ""
+
+  //NO MORE STATE, NOW USE USESTATE HOOK TO CREATE THE TEXT STATE
+  const [text, setText] = useState("")
+
   };
 
   // FUNCTION-BASED COMPONENT SO NOW CHANGE ALL INNER FUNCTIONS INTO FUNCTIONS
 
-  const onChange = e => this.setState({ [e.target.name]: e.target.value });
+  // CHANGE THIS.SETSTATE TO SETTEXT and can remove the e.target.name object and just pass in e.target.value
+  const onChange = e => setText(e.target.value);
 
   const onSubmit = e => {
     e.preventDefault();
