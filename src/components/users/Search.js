@@ -40,13 +40,14 @@ const Search = ({ searchUsers, showClear, clearUsers }) => {
   // const { showClear, clearUsers } = this.props;
   return (
     <div>
-      <form onSubmit={this.onSubmit} className="form">
+      <form onSubmit={onSubmit} className="form">
         <input
           type="text"
           name="text"
           placeholder="Search Users"
-          value={this.state.text}
-          onChange={this.onChange}
+          // no need to use this.state.text, only text
+          value={text}
+          onChange={onChange}
         />
         <input
           type="submit"
