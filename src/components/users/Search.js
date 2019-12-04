@@ -12,59 +12,51 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
   //   text: ""
 
   //NO MORE STATE, NOW USE USESTATE HOOK TO CREATE THE TEXT STATE
-  const [text, setText] = useState("")
-
-  };
-
-  // FUNCTION-BASED COMPONENT SO NOW CHANGE ALL INNER FUNCTIONS INTO FUNCTIONS
-
-  // CHANGE THIS.SETSTATE TO SETTEXT and can remove the e.target.name object and just pass in e.target.value
-  const onChange = e => setText(e.target.value);
-
-  const onSubmit = e => {
-    e.preventDefault();
-    if (text === "") {
-      setAlert("Please enter something", "light");
-    } else {
-      this.props.searchUsers(this.state.text);
-      this.setState({ text: "" });
-    }
-  };
-
-  // REMOVE THE RENDER FOR FUNCTION-BASED COMPONENTS
-
-  // render() {
-
-  // since the props are passed up top in the function, no need to have this.props anymore
-
-  // const { showClear, clearUsers } = this.props;
-  return (
-    <div>
-      <form onSubmit={onSubmit} className="form">
-        <input
-          type="text"
-          name="text"
-          placeholder="Search Users"
-          // no need to use this.state.text, only text
-          value={text}
-          onChange={onChange}
-        />
-        <input
-          type="submit"
-          value="Search"
-          className="btn btn-dark btn-block"
-        />
-      </form>
-      {/* if this.props.showClear is true then show button  */}
-      {showClear && (
-        <button className="btn btn-light btn-block" onClick={clearUsers}>
-          Clear
-        </button>
-      )}
-    </div>
-  );
-  // }
+  const [text, setText] = useState("");
 };
+
+// FUNCTION-BASED COMPONENT SO NOW CHANGE ALL INNER FUNCTIONS INTO FUNCTIONS
+
+// CHANGE THIS.SETSTATE TO SETTEXT and can remove the e.target.name object and just pass in e.target.value
+const onChange = e => setText(e.target.value);
+
+const onSubmit = e => {
+  e.preventDefault();
+  if (text === "") {
+    setAlert("Please enter something", "light");
+  } else {
+    searchUsers(text);
+    setText("");
+  }
+};
+
+// REMOVE THE RENDER FOR FUNCTION-BASED COMPONENTS
+
+// render() {
+
+// since the props are passed up top in the function, no need to have this.props anymore
+
+// const { showClear, clearUsers } = this.props;
+return (
+  <div>
+    <form onSubmit={onSubmit} className="form">
+      <input
+        type="text"
+        name="text"
+        placeholder="Search Users"
+        value={text}
+        onChange={onChange}
+      />
+      <input type="submit" value="Search" className="btn btn-dark btn-block" />
+    </form>
+    {showClear && (
+      <button className="btn btn-light btn-block" onClick={clearUsers}>
+        Clear
+      </button>
+    )}
+  </div>
+);
+// }
 
 //NO MORE STATIC BECAUSE FUNCTION-BASED COMPONENT SO MOVED propTypes BELOW the function
 Search.propTypes = {
