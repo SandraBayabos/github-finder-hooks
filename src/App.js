@@ -82,11 +82,9 @@ const App = () => {
     <GithubState>
       <Router>
         <div className="App">
-          {/* title is a prop that we will pass down to Navbar.js */}
           <Navbar />
           <div className="container">
             <Alert alert={alert} />
-            {/* rendering Search and Users into Fragments for the route "/" */}
             <Switch>
               <Route
                 exact
