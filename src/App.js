@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 // import UserItem from "./components/users/UserItem";
@@ -11,30 +11,22 @@ import About from "./components/pages/About";
 import "./App.css";
 
 // convert function App() to class App for now & we need to extend the React.Component (but if we import {Component from above then can just say Component})
-class App extends Component {
-  state = {
-    users: [],
-    user: {},
-    repos: [],
-    loading: false,
-    alert: null
-  };
+const App = () => {
 
-  // async componentDidMount() {
-  //   this.setState({ loading: true });
-  //   // can do axios get request using.then (without the async on componentDidMount() OR can use async)
-  //   // axios
-  //   //   .get("https://api.github.com/users")
-  //   //   .then(res => console.log(res.data));
-  //   const res = await axios.get(
-  //     `https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-  //   );
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState(null);
 
-  //   this.setState({ users: res.data, loading: false });
-  // }
+  // state = {
+  //   users: [],
+  //   user: {},
+  //   repos: [],
+  //   loading: false,
+  //   alert: null
+  // };
 
-  //searchUsers is a function below and we are passing the prop UP from Search.js.
-  //When we submit the form in Search.js, it calls the props.searchUsers, and that is being caught down below in searchUsers = this.searchUsers and saying when that fires, call this.searchUsers, which is the async call below, which is making a request and setting the state to this.searchUsers i.e. the data that gets returned
   searchUsers = async text => {
     this.setState({ loading: true });
 
