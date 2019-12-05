@@ -29,16 +29,19 @@ const GithubState = props => {
 
   // SET LOADING
 
+  // Everything within the GithubContext.Provider tags will be available in the entire app
   return (
-    <GithubContext.Provider>
-      {/* the following are available to the entire app */}
-      value=
-      {{
+    <GithubContext.Provider
+      value={{
         users: state.users,
         user: state.user,
         repos: state.repos,
         loading: state.loading
       }}
+    >
+      {props.children}
     </GithubContext.Provider>
   );
 };
+
+export default GithubState;
