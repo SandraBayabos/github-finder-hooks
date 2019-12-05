@@ -94,11 +94,9 @@ const App = () => {
                   <Search
                     searchUsers={searchUsers}
                     clearUsers={clearUsers}
-                    // if users.length is more than 0 then showClear is true (which comes from Search.js where if true then show button) or else showClear is set to false so no show
                     showClear={users.length > 0 ? true : false}
                     setAlert={showAlert}
                   />
-                  {/* loading and users are being passed in as props so that Users.js can access them */}
                   <Users loading={loading} users={users} />
                 </Fragment>
               )}
