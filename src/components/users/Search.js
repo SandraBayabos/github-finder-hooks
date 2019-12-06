@@ -64,8 +64,6 @@ const Search = ({ setAlert }) => {
 
 //NO MORE STATIC BECAUSE FUNCTION-BASED COMPONENT SO MOVED propTypes BELOW the function
 Search.propTypes = {
-  clearUsers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired,
   setAlert: PropTypes.func.isRequired
 };
 

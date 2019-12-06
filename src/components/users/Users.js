@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import UserItem from "./UserItem";
 import Spinner from "../layout/Spinner";
-import PropTypes from "prop-types";
 import GithubContext from "../../context/github/githubContext";
 
 // can remove loading and users from props because we're not passing them in as props, we're getting them from githubContext
@@ -24,10 +23,7 @@ const Users = () => {
   }
 };
 
-Users.propTypes = {
-  users: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
-};
+// removed propTypes
 
 // creating a variable for usersStyle
 
