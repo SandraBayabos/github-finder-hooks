@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import UserItem from "./UserItem";
 import Spinner from "../layout/Spinner";
 import PropTypes from "prop-types";
+import GithubContext from "../../context/github/githubContext";
 
-const Users = ({ users, loading }) => {
+// can remove loading and users from props because we're not passing them in as props, we're getting them from githubContext
+
+const Users = () => {
+  const githubContext = useContext(GithubContext);
+
+  const { loading, users } = githubContext;
+
   if (loading) {
     return <Spinner />;
   } else {
     return (
       <div style={usersStyle}>
-        {/* Loop through the list in the state using .map */}
-        {/* each child in a list needs to have a unique key, so in this case we use user.id */}
-        {/* user={user} is we are passing in the entire user - each {user} represents the entire user object after you've looped */}
         {users.map(user => (
           <UserItem key={user.id} user={user} />
         ))}

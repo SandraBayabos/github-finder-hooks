@@ -87,7 +87,8 @@ const App = () => {
                       showClear={users.length > 0 ? true : false}
                       setAlert={showAlert}
                     />
-                    <Users loading={loading} users={users} />
+                    {/* removed users & loading from props because now they are part of context so we can grab them from context instead */}
+                    <Users />
                   </Fragment>
                 )}
               />
