@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
+import GithubContext from "../../context/github/githubContext";
 
 // FORMS ARE ALWAYS COMPONENT-LEVEL STATE. YOU WON'T BRING IT TO APP.JS LEVEL
 
@@ -7,7 +8,9 @@ import PropTypes from "prop-types";
 
 //IN A FUNCTION, PROPS ARE PASSED IN HERE
 
-const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
+// REMOVE SEARCHUSERS FROM PROPS AND PROPTYPE SINCE IT'S NOW IN REDUCER
+const Search = ({ showClear, clearUsers, setAlert }) => {
+  const githubContext = useContext(GithubContext);
   //NO MORE STATE, NOW USE USESTATE HOOK TO CREATE THE TEXT STATE
   const [text, setText] = useState("");
 
@@ -21,7 +24,7 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
     if (text === "") {
       setAlert("Please enter something", "light");
     } else {
-      searchUsers(text);
+      githubContext.searchUsers(text);
       setText("");
     }
   };
@@ -58,7 +61,6 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
 
 //NO MORE STATIC BECAUSE FUNCTION-BASED COMPONENT SO MOVED propTypes BELOW the function
 Search.propTypes = {
-  searchUsers: PropTypes.func.isRequired,
   clearUsers: PropTypes.func.isRequired,
   showClear: PropTypes.bool.isRequired,
   setAlert: PropTypes.func.isRequired
