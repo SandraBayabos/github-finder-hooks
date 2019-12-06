@@ -82,11 +82,9 @@ const App = () => {
                 path="/"
                 render={props => (
                   <Fragment>
-                    <Search
-                      clearUsers={clearUsers}
-                      showClear={users.length > 0 ? true : false}
-                      setAlert={showAlert}
-                    />
+                    {/* removed clearUsers={clearUsers}
+                      showClear={users.length > 0 ? true : false} */}
+                    <Search setAlert={showAlert} />
                     {/* removed users & loading from props because now they are part of context so we can grab them from context instead */}
                     <Users />
                   </Fragment>
