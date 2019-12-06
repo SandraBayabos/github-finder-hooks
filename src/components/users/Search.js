@@ -8,8 +8,8 @@ import GithubContext from "../../context/github/githubContext";
 
 //IN A FUNCTION, PROPS ARE PASSED IN HERE
 
-// REMOVE SEARCHUSERS FROM PROPS AND PROPTYPE SINCE IT'S NOW IN REDUCER
-const Search = ({ showClear, clearUsers, setAlert }) => {
+// REMOVE SEARCHUSERS and CLEARUSERS and SHOWCLEAR FROM PROPS AND PROPTYPE SINCE IT'S NOW IN REDUCER
+const Search = ({ setAlert }) => {
   const githubContext = useContext(GithubContext);
   //NO MORE STATE, NOW USE USESTATE HOOK TO CREATE THE TEXT STATE
   const [text, setText] = useState("");
@@ -50,8 +50,11 @@ const Search = ({ showClear, clearUsers, setAlert }) => {
           className="btn btn-dark btn-block"
         />
       </form>
-      {showClear && (
-        <button className="btn btn-light btn-block" onClick={clearUsers}>
+      {githubContext.users.length > 0 && (
+        <button
+          className="btn btn-light btn-block"
+          onClick={githubContext.clearUsers}
+        >
           Clear
         </button>
       )}

@@ -39,6 +39,8 @@ const GithubState = props => {
   // GET REPOS
 
   // CLEAR USERS
+  const clearUsers = () => dispatch({type: CLEAR_USERS});
+  };
 
   // SET LOADING
 

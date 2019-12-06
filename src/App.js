@@ -55,11 +55,11 @@ const App = () => {
     setLoading(false);
   };
 
-  //Clear users from state
-  const clearUsers = () => {
-    setUsers([]);
-    setLoading(false);
-  };
+  // REMOVED CLEARUSERS FROM APP.JS
+  // const clearUsers = () => {
+  //   setUsers([]);
+  //   setLoading(false);
+  // };
 
   //changed setAlert to "showAlert" because setAlert is already used to set the name of the state above
 
