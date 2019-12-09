@@ -36,6 +36,23 @@ const GithubState = props => {
 
   // GET USER
 
+  const getUser = async username => {
+    //don't need to say setLoading(true) because it should come from setLoading below, which dispatches SET_LOADING and sets it to true anyway
+    setLoading();
+
+    const res = await axios.get(
+      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    dispatch({
+      type: GET_USER,
+      payload: res.data
+    });
+
+    // setUser(res.data);
+    // setLoading(false);
+  };
+
   // GET REPOS
 
   // CLEAR USERS
@@ -56,7 +73,8 @@ const GithubState = props => {
         repos: state.repos,
         loading: state.loading,
         searchUsers,
-        clearUsers
+        clearUsers,
+        getUser
       }}
     >
       {props.children}

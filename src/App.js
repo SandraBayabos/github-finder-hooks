@@ -15,7 +15,7 @@ const App = () => {
 
   // because we used users
   // const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
@@ -32,16 +32,17 @@ const App = () => {
 
   // Get a single Github user. username is the same as login, which is in User.js and UserItem.js
 
-  const getUser = async username => {
-    setLoading(true);
+  // removed getUser from App.js & moved it to GithubState.js
+  // const getUser = async username => {
+  //   setLoading(true);
 
-    const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
+  //   const res = await axios.get(
+  //     `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+  //   );
 
-    setUser(res.data);
-    setLoading(false);
-  };
+  //   setUser(res.data);
+  //   setLoading(false);
+  // };
 
   //Get users repo
 
@@ -96,14 +97,8 @@ const App = () => {
                 exact
                 path="/user/:login"
                 render={props => (
-                  <User
-                    {...props}
-                    getUser={getUser}
-                    getUserRepos={getUserRepos}
-                    user={user}
-                    repos={repos}
-                    loading={loading}
-                  />
+                  // removed getUser={getUser} and user={user}
+                  <User {...props} getUserRepos={getUserRepos} repos={repos} />
                 )}
               />
             </Switch>
