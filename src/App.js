@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
@@ -9,6 +9,7 @@ import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 import "./App.css";
 import GithubState from "./context/github/GithubState";
+import AlertState from "./context/alert/alertState";
 
 const App = () => {
   //useState mimics the state below
@@ -66,53 +67,57 @@ const App = () => {
 
   //changed setAlert to "showAlert" because setAlert is already used to set the name of the state above
 
-  const showAlert = (msg, type) => {
-    setAlert({ msg, type });
+  // const showAlert = (msg, type) => {
+  //   setAlert({ msg, type });
 
-    setTimeout(() => setAlert(null), 5000);
-  };
+  //   setTimeout(() => setAlert(null), 5000);
+  // };
 
   return (
     <GithubState>
-      <Router>
-        <div className="App">
-          <Navbar />
-          <div className="container">
-            <Alert alert={alert} />
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={props => (
-                  <Fragment>
-                    {/* removed clearUsers={clearUsers}
+      <AlertState>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <div className="container">
+              {/* removed alert={alert} */}
+              <Alert />
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={props => (
+                    <Fragment>
+                      {/* removed clearUsers={clearUsers}
                       showClear={users.length > 0 ? true : false} */}
-                    <Search setAlert={showAlert} />
-                    {/* removed users & loading from props because now they are part of context so we can grab them from context instead */}
-                    <Users />
-                  </Fragment>
-                )}
-              />
-              <Route exact path="/about" component={About} />
-              <Route
-                exact
-                path="/user/:login"
-                component={User}
-                // removed
-                // <User
-                //   {...props}
-                //   getUser={getUser}
-                //   and
-                //   user={user}
-                //   and
-                //   getUserRepos={getUserRepos}
-                //   repos={repos}
-                // />
-              />
-            </Switch>
+                      {/* removed setAlert={showAlert} */}
+                      <Search />
+                      {/* removed users & loading from props because now they are part of context so we can grab them from context instead */}
+                      <Users />
+                    </Fragment>
+                  )}
+                />
+                <Route exact path="/about" component={About} />
+                <Route
+                  exact
+                  path="/user/:login"
+                  component={User}
+                  // removed
+                  // <User
+                  //   {...props}
+                  //   getUser={getUser}
+                  //   and
+                  //   user={user}
+                  //   and
+                  //   getUserRepos={getUserRepos}
+                  //   repos={repos}
+                  // />
+                />
+              </Switch>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </AlertState>
     </GithubState>
   );
 };
