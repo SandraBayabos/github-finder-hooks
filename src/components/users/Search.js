@@ -12,6 +12,8 @@ import AlertContext from "../../context/alert/alertContext";
 // REMOVE SEARCHUSERS and CLEARUSERS and SHOWCLEAR FROM PROPS AND PROPTYPE SINCE IT'S NOW IN REDUCER
 const Search = () => {
   const githubContext = useContext(GithubContext);
+  const alertContext = useContext(AlertContext);
+
   //NO MORE STATE, NOW USE USESTATE HOOK TO CREATE THE TEXT STATE
   const [text, setText] = useState("");
 
