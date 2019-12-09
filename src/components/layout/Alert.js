@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AlertContext from "../../context/alert/alertContext";
 
 //the Alert component only displays the alert on the screen
 
@@ -6,7 +7,11 @@ import React from "react";
 
 // alert is being passed in as props, which is the same as passing in props and then saying this.props.alert.type and this.props.alert.msg
 
-const Alert = ({ alert }) => {
+const Alert = () => {
+  const alertContext = useContext(AlertContext);
+
+  const { alert } = alertContext;
+
   return (
     alert !== null && (
       <div className={`alert alert-${alert.type}`}>
