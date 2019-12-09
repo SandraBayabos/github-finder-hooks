@@ -16,7 +16,7 @@ const App = () => {
   // because we used users
   // const [users, setUsers] = useState([]);
   // const [user, setUser] = useState({});
-  const [repos, setRepos] = useState([]);
+  // const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
@@ -45,17 +45,18 @@ const App = () => {
   // };
 
   //Get users repo
+  //REMOVED GETUSERREPOS & MOVED IT TO GITHUBSTATE.JS
 
-  const getUserRepos = async username => {
-    setLoading(true);
+  // const getUserRepos = async username => {
+  //   setLoading(true);
 
-    const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
+  //   const res = await axios.get(
+  //     `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+  //   );
 
-    setRepos(res.data);
-    setLoading(false);
-  };
+  //   setRepos(res.data);
+  //   setLoading(false);
+  // };
 
   // REMOVED CLEARUSERS FROM APP.JS
   // const clearUsers = () => {
@@ -96,10 +97,17 @@ const App = () => {
               <Route
                 exact
                 path="/user/:login"
-                render={props => (
-                  // removed getUser={getUser} and user={user}
-                  <User {...props} getUserRepos={getUserRepos} repos={repos} />
-                )}
+                component={User}
+                // removed
+                // <User
+                //   {...props}
+                //   getUser={getUser}
+                //   and
+                //   user={user}
+                //   and
+                //   getUserRepos={getUserRepos}
+                //   repos={repos}
+                // />
               />
             </Switch>
           </div>
