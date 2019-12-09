@@ -13,7 +13,8 @@ import GithubState from "./context/github/GithubState";
 const App = () => {
   //useState mimics the state below
 
-  const [users, setUsers] = useState([]);
+  // because we used users
+  // const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
