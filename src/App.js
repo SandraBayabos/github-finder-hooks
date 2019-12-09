@@ -17,7 +17,7 @@ const App = () => {
   // const [users, setUsers] = useState([]);
   // const [user, setUser] = useState({});
   // const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   // state = {
