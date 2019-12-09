@@ -9,7 +9,7 @@ import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 import "./App.css";
 import GithubState from "./context/github/GithubState";
-import AlertState from "./context/alert/alertState";
+import AlertState from "./context/alert/AlertState";
 
 const App = () => {
   //useState mimics the state below
