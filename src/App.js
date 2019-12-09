@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import Users from "./components/users/Users";
+// import Users from "./components/users/Users";
 import User from "./components/users/User";
 // import axios from "axios";
-import Search from "./components/users/Search";
+// import Search from "./components/users/Search";
 import Alert from "./components/layout/Alert";
+import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import "./App.css";
 import GithubState from "./context/github/GithubState";
@@ -83,20 +84,7 @@ const App = () => {
               {/* removed alert={alert} */}
               <Alert />
               <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={props => (
-                    <Fragment>
-                      {/* removed clearUsers={clearUsers}
-                      showClear={users.length > 0 ? true : false} */}
-                      {/* removed setAlert={showAlert} */}
-                      <Search />
-                      {/* removed users & loading from props because now they are part of context so we can grab them from context instead */}
-                      <Users />
-                    </Fragment>
-                  )}
-                />
+                <Route exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
                 <Route
                   exact
